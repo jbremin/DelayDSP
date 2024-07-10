@@ -9,8 +9,7 @@
 #pragma once
 
 #include <JuceHeader.h>
-
-const juce::ParameterID gainParamID { "gain", 1};
+#include "Parameters.h"
 
 //==============================================================================
 /**
@@ -57,12 +56,11 @@ public:
 
 private:
     juce::AudioProcessorValueTreeState apvts {
-        *this, nullptr, "Paramers", createParameterLayout()
+        *this, nullptr, "Parameters", Parameters::createParameterLayout()
     };
-    
-    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
-    juce::AudioParameterFloat* gainParam;
-    
+
+    Parameters params;
+
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DelayDSPAudioProcessor)
 };

@@ -63,13 +63,13 @@
   </FILTER>
   <FILTER uid="5" x="0.3948811700182815" y="0.3888888888888889" useARA="0"
           uiLastX_Normal="21" uiLastY_Normal="44" uiopen_Normal="1" uiLastX_Generic="245"
-          uiLastY_Generic="291" uiopen_Generic="0">
+          uiLastY_Generic="291" uiopen_Generic="1">
     <PLUGIN name="DelayDSP" format="VST3" category="Fx" manufacturer="Benmir"
             version="1.0.0" file="/Users/johanbremin/Library/Audio/Plug-Ins/VST3/DelayDSP.vst3"
-            uniqueId="5a0db1c" isInstrument="0" fileTime="1909c694e34" infoUpdateTime="1909c6ba8f8"
+            uniqueId="5a0db1c" isInstrument="0" fileTime="1909c694e34" infoUpdateTime="1909c74ddfb"
             numInputs="2" numOutputs="2" isShell="0" hasARAExtension="0"
             uid="acfdc423"/>
-    <STATE>191.VMjLgXK....O+fWarAhckI2bo8la8HRLt.iHfTlai8FYo41Y8HRUTYTK3HxO9.BOVMEUy.Ea0cVZtMEcgQWY9vSRC8Vav8lak4Fc9XCLt3hKt3hKt3hKt3hYRUUSTEETIckVwTjQisVTTgkdEYjKAQjYPQSPWgUdMcjKAQjct3hdA4hKt3hKt3hKtnTUv.UQAslXuk0UXoWUFE0YQcEV77RRC8Vav8lak4Fc9vyKVMEUy.Ea0cVZtMEcgQWY9..</STATE>
+    <STATE>324.VMjLgrS....O+fWarAhckI2bo8la8HRLt.iHfTlai8FYo41Y8HRUTYTK3HxO9.BOVMEUy.Ea0cVZtMEcgQWY9vSRC8Vav8lak4Fc9DSM43hUMoFSm4VQt3hKt7zJlcUXxEDZisVRxH1a3vVX3fjTLQmKogjYTwVXogiQY8FMwjENHIUUTkEUKMCR38TNtHzSPUDahcFLVkEdM01S23RUPIUQTMkYpYTV3fDdYc1ZrEFZtf1XmcmUisFLogjcyHDSncCZOcyMBQ0YIcEVyUEahkGMC4hKt3hKt3hKt3hKlIUUMQUTPkzUZESQFM1ZQQEV5UjQtDDQlAEMAcEV40zQtDDQ14hK5EjKt3hKt3hKt3hRUACTEEzZh8VVWgkdUYTTmE0UXwyKIMzasA2atUlaz4COuX0TTMCTrU2Yo41TzEFck4C.</STATE>
     <LAYOUT>
       <INPUTS>
         <BUS index="0" layout="L R"/>
@@ -83,7 +83,7 @@
           uiLastX_Normal="159" uiLastY_Normal="245" uiopen_Normal="1">
     <PLUGIN name="AUAudioFilePlayer" format="AudioUnit" category="Generator"
             manufacturer="Apple" version="1.6.0" file="AudioUnit:Generators/augn,afpl,appl"
-            uniqueId="6163676e" isInstrument="0" fileTime="0" infoUpdateTime="1909c6ba8f8"
+            uniqueId="6163676e" isInstrument="0" fileTime="0" infoUpdateTime="1909c74ddfb"
             numInputs="0" numOutputs="2" isShell="0" hasARAExtension="0"
             uid="6163676e"/>
     <STATE>615.hAGaoMGcv.C1AHv.DTfAGfPBJr.Gc3wGgvUag4VclE1XzUmbkIGUjEFcg8EDarVPUAkbkMWYzAUYxMWZyQWYtQ2TzEFcksTY4c0b0IFc4AWYWYWYxMWZu4FUzkGbk8EDOXVZrUVKxUlYkIWYtMVYyQkag0VYRDFbvwFPgxvzM3vCPDwEXYTZrUlSg0VYWIUYmk1atMmWIM2TkwVYiQWYjYTZrU1WPj2KUMWYxM2Kp8FZg4lXxUVao41KMU2boM1KSEVavwVYy8RUNQjTGIkSDAxTOUkSDMEHs.BQkUFbfbjbu8lckMGHs.xUgY2KUM0WDczWDIWcs8ESu8Fby8RUS8EQG8EQxUWaeEiLy7UVkwFauc2WSQkTIAETEQjK2ElcgJA0SPQEVbAFWngWRU1Yo8laD8VYywzauAmVRU1Yo8laDEFcg8EDPjzbSUFakMFckQlTkcVZu4lVRU1Yo8laNEVakkvSP.G...........dkAE..fA..................fMtQAA..........eQzQeQjb001WwHyLekUYrE....vTTIUR.....................................7++e+O..........HDnB.v+++9eInkSkcGHRU1Yo8laIHQXlAGaP.fDgU2YtEMHPXkQowVYfDCVU4FcoQGakQF.H.PF.XB.q.PR.DE.YAfW..G.0Afd.rG.8A.g.zH.UB.oA.R.hDvJAnS.EE.VALV.jEv0Afc.iG.4Ajd.qG.7ALe.5C.......HP..........HB..................Hv.</STATE>
@@ -98,7 +98,7 @@
           uiLastX_Normal="201" uiLastY_Normal="82" uiopen_Normal="0">
     <PLUGIN name="Wave Observer" format="AudioUnit" category="Effect" manufacturer="Press Play"
             version="1.7.0" file="AudioUnit:Effects/aufx,PPwo,PPly" uniqueId="61757d6e"
-            isInstrument="0" fileTime="0" infoUpdateTime="1909c6ba8f9" numInputs="2"
+            isInstrument="0" fileTime="0" infoUpdateTime="1909c74ddfc" numInputs="2"
             numOutputs="2" isShell="0" hasARAExtension="0" uid="61757d6e"/>
     <STATE>282.hAGaoMGcv.i0AHv.DTfAGfPBJr.CT4VXsUFWsEla0YVXiQWcxUlbTQVXzEFUzkGbkc0b0IFc4AWYWYWYxMWZu4FTR.ETrk2SPPYhmNFZg4lakwF.1Vla1UFauAWYe01ajU1WjUmbgQWZu41x+vcFlAUD1xMomEVZts7OTu05xHmW4MJZ0U1x+LdpvWPGU3Fos8FYkEPoyMVXrU1x+.O.......vpyg1a28EakcVYtQlvmZWYxMWZu4ly.DvA.X6cgYWYl8lbs8UauQVYeQVcxEFco8laK+S1YlYlYlolRDVclgmDPA0cuIA.Ab..HTgFmvRL4DjPG483nC.......DP..........z....................P6</STATE>
     <LAYOUT>
