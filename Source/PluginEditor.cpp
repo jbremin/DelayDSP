@@ -30,7 +30,7 @@ void DelayDSPAudioProcessorEditor::paint (juce::Graphics& g)
 
     g.setColour (juce::Colours::white);
     g.setFont (juce::FontOptions (15.0f));
-    g.drawFittedText ("Hello Johns!!!", getLocalBounds(), juce::Justification::centred, 1);
+    g.drawFittedText ("No User Interface yet!", getLocalBounds(), juce::Justification::centred, 1);
 }
 
 void DelayDSPAudioProcessorEditor::resized()
