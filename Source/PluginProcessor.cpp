@@ -10,18 +10,14 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-DelayDSPAudioProcessor::DelayDSPAudioProcessor()
-#ifndef JucePlugin_PreferredChannelConfigurations
-     : AudioProcessor (BusesProperties()
-                     #if ! JucePlugin_IsMidiEffect
-                      #if ! JucePlugin_IsSynth
-                       .withInput  ("Input",  juce::AudioChannelSet::stereo(), true)
-                      #endif
-                       .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
-                     #endif
-                       )
-#endif
+DelayDSPAudioProcessor::DelayDSPAudioProcessor() : AudioProcessor(
+                                                   BusesProperties()
+                                                        .withInput("Input", juce::AudioChannelSet::stereo(), true)
+                                                        .withOutput("Output", juce::AudioChannelSet::stereo(), true)
+                                                   )
 {
+    auto* param = apvts.getParameter(gainParamID.getParamID());
+    gainParam = dynamic_cast<juce::AudioParameterFloat*>(param);
 }
 
 DelayDSPAudioProcessor::~DelayDSPAudioProcessor()
@@ -116,7 +112,7 @@ void DelayDSPAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, [[m
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
     
-    float gainInDecibels = apvts.getRawParameterValue("gain")->load();
+    float gainInDecibels = gainParam->get();
     float gain = juce::Decibels::decibelsToGain(gainInDecibels);
     
     for (int channel = 0; channel < totalNumInputChannels; ++channel) {
@@ -164,7 +160,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout DelayDSPAudioProcessor::crea
 {
     juce::AudioProcessorValueTreeState::ParameterLayout layout;
     
-    layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID { "gain", 1 },"Output Gain", juce::NormalisableRange<float> { -12.0f, 12.0f }, 0.0f));
+    layout.add(std::make_unique<juce::AudioParameterFloat>(gainParamID, "Output Gain", juce::NormalisableRange<float> { -12.0f, 12.0f }, 0.0f));
     
     return layout;
 }

@@ -10,6 +10,8 @@
 
 #include <JuceHeader.h>
 
+const juce::ParameterID gainParamID { "gain", 1};
+
 //==============================================================================
 /**
 */
@@ -59,6 +61,7 @@ private:
     };
     
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+    juce::AudioParameterFloat* gainParam;
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DelayDSPAudioProcessor)
