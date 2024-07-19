@@ -16,6 +16,8 @@
             file="Source/PluginProcessor.h"/>
       <FILE id="v8KOp6" name="RotaryKnob.cpp" compile="1" resource="0" file="Source/RotaryKnob.cpp"/>
       <FILE id="HXAAPy" name="RotaryKnob.h" compile="0" resource="0" file="Source/RotaryKnob.h"/>
+      <FILE id="oteV5P" name="LookAndFeel.cpp" compile="1" resource="0" file="Source/LookAndFeel.cpp"/>
+      <FILE id="pOl3zi" name="LookAndFeel.h" compile="0" resource="0" file="Source/LookAndFeel.h"/>
     </GROUP>
   </MAINGROUP>
   <MODULES>
