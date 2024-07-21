@@ -67,6 +67,19 @@ void RotaryKnobLookAndFeel::drawRotarySlider( juce::Graphics& g, int x, int y, i
     dialPath.lineTo(dialEnd);
     g.setColour(Colors::Knob::dial);
     g.strokePath(dialPath, strokeType);
+    
+    if (slider.isEnabled()) {
+    juce::Path valueArc; valueArc.addCentredArc(center.x,
+                               center.y,
+                               arcRadius,
+                               arcRadius,
+                               0.0f,
+                               rotaryStartAngle,
+                               toAngle,
+    true);
+        g.setColour(Colors::Knob::trackActive);
+        g.strokePath(valueArc, strokeType);
+    }
 }
 
 
