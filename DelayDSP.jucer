@@ -4,6 +4,9 @@
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="Benmir"
               pluginFormats="buildVST3" cppLanguageStandard="20">
   <MAINGROUP id="E9ScWP" name="DelayDSP">
+    <GROUP id="{4F200CE8-F717-63C2-5006-1A7EEB5D854A}" name="Assets">
+      <FILE id="cpBazO" name="Lato-Medium.ttf" compile="0" resource="1" file="../Study/plugin_dev_resources/Lato-Medium.ttf"/>
+    </GROUP>
     <GROUP id="{35042D92-1A98-0DCD-5B0F-871C26D88944}" name="Source">
       <FILE id="EJskk5" name="Parameters.cpp" compile="1" resource="0" file="Source/Parameters.cpp"/>
       <FILE id="ZR7Vih" name="Parameters.h" compile="0" resource="0" file="Source/Parameters.h"/>

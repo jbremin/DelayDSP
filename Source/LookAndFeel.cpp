@@ -11,11 +11,25 @@
 #include <JuceHeader.h>
 #include "LookAndFeel.h"
 
+const juce::Typeface::Ptr Fonts::typeface = juce::Typeface::createSystemTypefaceFor( BinaryData::LatoMedium_ttf, BinaryData::LatoMedium_ttfSize);
+
+juce::Font Fonts::getFont(float height)
+{
+   // return juce::Font(typeface).withHeight(height);
+    return juce::FontOptions(typeface).withHeight(height).withMetricsKind(juce::TypefaceMetricsKind::legacy);
+}
+
 //==============================================================================
 RotaryKnobLookAndFeel::RotaryKnobLookAndFeel()
 {
     setColour(juce::Label::textColourId, Colors::Knob::label);
     setColour(juce::Slider::textBoxTextColourId, Colors::Knob::label);
+    setColour(juce::Slider::rotarySliderFillColourId, Colors::Knob::trackActive);
+}
+
+juce::Font RotaryKnobLookAndFeel::getLabelFont([[maybe_unused]] juce::Label& label) {
+    
+    return Fonts::getFont();
 }
 
 void RotaryKnobLookAndFeel::drawRotarySlider( juce::Graphics& g, int x, int y, int width,
@@ -69,15 +83,20 @@ void RotaryKnobLookAndFeel::drawRotarySlider( juce::Graphics& g, int x, int y, i
     g.strokePath(dialPath, strokeType);
     
     if (slider.isEnabled()) {
+    
+        float fromAngle = rotaryStartAngle;
+        if (slider.getProperties()["drawFromMiddle"]) {
+            fromAngle += (rotaryEndAngle - rotaryStartAngle) / 2.0f;
+        }
     juce::Path valueArc; valueArc.addCentredArc(center.x,
                                center.y,
                                arcRadius,
                                arcRadius,
                                0.0f,
-                               rotaryStartAngle,
+                               fromAngle,
                                toAngle,
     true);
-        g.setColour(Colors::Knob::trackActive);
+        g.setColour(slider.findColour(juce::Slider::rotarySliderFillColourId));
         g.strokePath(valueArc, strokeType);
     }
 }
@@ -110,4 +129,16 @@ void LookAndFeel::resized()
     // This method is where you should set the bounds of any child
     // components that your component contains..
 
+}
+
+
+
+MainLookAndFeel::MainLookAndFeel()
+{
+    setColour(juce::GroupComponent::textColourId, Colors::Group::label);
+    setColour(juce::GroupComponent::outlineColourId, Colors::Group::outline);
+}
+juce::Font MainLookAndFeel::getLabelFont([[maybe_unused]] juce::Label& label)
+{
+    return Fonts::getFont();
 }
