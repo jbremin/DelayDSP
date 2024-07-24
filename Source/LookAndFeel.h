@@ -47,7 +47,7 @@ class Fonts
 public:
     Fonts() = delete;
 
-    static juce::Font getFont(float height = 16.0f);
+    static juce::Font getFont(float height = 12.0f);
 
 private:
     static const juce::Typeface::Ptr typeface;
