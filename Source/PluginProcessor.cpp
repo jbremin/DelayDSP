@@ -8,6 +8,7 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include "ProtectYourEars.h"
 
 //==============================================================================
 DelayDSPAudioProcessor::DelayDSPAudioProcessor() :
@@ -104,7 +105,7 @@ void DelayDSPAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     int maxDelayInSamples = int(std::ceil(numSamples));
     delayLine.setMaximumDelayInSamples(maxDelayInSamples);
     delayLine.reset();
-    
+
 }
 
 void DelayDSPAudioProcessor::releaseResources()
@@ -155,6 +156,9 @@ void DelayDSPAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, [[m
         channelDataL[sample] = mixL * params.gain;
         channelDataR[sample] = mixR * params.gain;
     }
+    #if JUCE_DEBUG
+    protectYourEars(buffer);
+    #endif
 }
 
 //==============================================================================

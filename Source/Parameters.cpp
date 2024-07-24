@@ -55,6 +55,7 @@ Parameters::Parameters(juce::AudioProcessorValueTreeState& apvts)
     castParameter(apvts, gainParamID, gainParam);
     castParameter(apvts, delayTimeParamID, delayTimeParam);
     castParameter(apvts, mixParamID, mixParam);
+    castParameter(apvts, feedbackParamID, feedbackParam);
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout Parameters::createParameterLayout()
@@ -85,7 +86,16 @@ juce::AudioProcessorValueTreeState::ParameterLayout Parameters::createParameterL
         100.0f,
         juce::AudioParameterFloatAttributes().withStringFromValueFunction(stringFromPercent)
         ));
-
+    
+    layout.add(std::make_unique<juce::AudioParameterFloat>(
+        feedbackParamID,
+        "Feedback",
+        juce::NormalisableRange<float>(0.0f, 100.0f, 1.0f),
+        0.0f, // make sure this is zero!
+        juce::AudioParameterFloatAttributes()
+            .withStringFromValueFunction(stringFromPercent)
+    ));
+    
     return layout;
 }
 
