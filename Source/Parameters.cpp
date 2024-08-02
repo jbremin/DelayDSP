@@ -204,7 +204,7 @@ void Parameters::update() noexcept
     feedbackSmoother.setTargetValue(feedbackParam->get() * 0.01f);
     stereoSmoother.setTargetValue(stereoParam->get() * 0.01f);
     lowCutSmoother.setTargetValue(lowCutParam->get());
-    highCutSmoother.setTargetValue(lowCutParam->get());
+    highCutSmoother.setTargetValue(highCutParam->get());
 }
 
 void Parameters::smoothen() noexcept

@@ -34,18 +34,15 @@ public:
 
     float gain = 0.0f;
     float delayTime = 0.0f;
+    float mix = 1.0f;
+    float feedback = 0.0f;
+    float panL = 0.0f;
+    float panR = 1.0f;
+    float lowCut = 20.0f;
+    float highCut = 20000.0f;
     
     static constexpr float minDelayTime = 5.0f;
     static constexpr float maxDelayTime = 5000.0f;
-    
-    float mix = 1.0f;
-    float feedback = 0.0f;
-    
-    float panL = 0.0f;
-    float panR = 1.0f;
-    
-    float lowCut = 20.0f;
-    float highCut = 20000.0f;
 
 private:
     juce::AudioParameterFloat* gainParam;
