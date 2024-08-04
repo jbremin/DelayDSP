@@ -32,6 +32,13 @@ DelayDSPAudioProcessorEditor::DelayDSPAudioProcessorEditor (DelayDSPAudioProcess
     outputGroup.addAndMakeVisible(mixKnob);
     addAndMakeVisible(outputGroup);
     
+    tempoSyncButton.setButtonText("Sync");
+    tempoSyncButton.setClickingTogglesState(true);
+    tempoSyncButton.setBounds(0, 0, 70, 27);
+    tempoSyncButton.setColour(juce::TextButton::ColourIds::buttonOnColourId,
+                              juce::Colours::red);
+    delayGroup.addAndMakeVisible(tempoSyncButton);
+    
     setLookAndFeel (&mainLF);
         
     setSize(500, 330);
@@ -63,6 +70,7 @@ void DelayDSPAudioProcessorEditor::resized()
     int height = bounds.getHeight() - 60; // Position the groups
         delayGroup.setBounds(10, y, 110, height);
         outputGroup.setBounds(bounds.getWidth() - 160, y, 150, height);
+        delayGroup.addAndMakeVisible(delayNoteKnob);
     
         feedbackGroup.setBounds(delayGroup.getRight() + 10, y,
                                 outputGroup.getX() - delayGroup.getRight() - 20, height);
@@ -76,4 +84,7 @@ void DelayDSPAudioProcessorEditor::resized()
         delayTimeKnob.setTopLeftPosition(20, 20);
         mixKnob.setTopLeftPosition(20, 20);
         gainKnob.setTopLeftPosition(mixKnob.getX(), mixKnob.getBottom() + 10);
+    
+        tempoSyncButton.setTopLeftPosition(20, delayTimeKnob.getBottom() + 10);
+        delayNoteKnob.setTopLeftPosition(20, tempoSyncButton.getBottom() - 5);
 }
