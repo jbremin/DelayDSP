@@ -17,7 +17,8 @@
 //==============================================================================
 /**
 */
-class DelayDSPAudioProcessorEditor  : public juce::AudioProcessorEditor
+class DelayDSPAudioProcessorEditor  : public juce::AudioProcessorEditor,
+                                      private juce::AudioProcessorParameter::Listener
 {
 public:
     DelayDSPAudioProcessorEditor (DelayDSPAudioProcessor&);
@@ -28,6 +29,10 @@ public:
     void resized() override;
 
 private:
+    void parameterValueChanged(int, float) override;
+    void parameterGestureChanged(int, bool) override { }
+    void updateDelayKnobs(bool tempoSyncActive);
+    
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     DelayDSPAudioProcessor& audioProcessor;

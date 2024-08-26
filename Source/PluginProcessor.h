@@ -59,9 +59,10 @@ public:
     juce::AudioProcessorValueTreeState apvts {
         *this, nullptr, "Parameters", Parameters::createParameterLayout()
     };
+    
+    Parameters params;
 
 private:
-    Parameters params;
     Tempo tempo;
     
     juce::dsp::DelayLine<float, juce::dsp::DelayLineInterpolationTypes::Linear> delayLine;
