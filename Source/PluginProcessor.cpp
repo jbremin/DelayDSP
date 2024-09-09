@@ -121,6 +121,9 @@ void DelayDSPAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     
     lastLowCut = -1.0f;
     lastHighCut = -1.0f;
+    
+    levelL.store(0.0f);
+    levelR.store(0.0f);
 
 }
 
@@ -176,6 +179,8 @@ void DelayDSPAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, [[m
     float* outputDataL = mainOutput.getWritePointer(0);
     float* outputDataR = mainOutput.getWritePointer(isMainOutputStereo ? 1 : 0);
 
+    float maxL = 0.0f;
+    float maxR = 0.0f;
 
     for (int sample = 0; sample < buffer.getNumSamples(); ++sample) {
         params.smoothen();
@@ -215,12 +220,23 @@ void DelayDSPAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, [[m
         float mixL = dryL + wetL * params.mix;
         float mixR = dryR + wetR * params.mix;
         
-        outputDataL[sample] = mixL * params.gain;
-        outputDataR[sample] = mixR * params.gain;
+        float outL = mixL * params.gain;
+        float outR = mixR * params.gain;
+        
+        outputDataL[sample] = outL;
+        outputDataR[sample] = outR;
+        
+        maxL = std::max(maxL, std::abs(outL));
+        maxR = std::max(maxR, std::abs(outR));
     }
+    
     #if JUCE_DEBUG
     protectYourEars(buffer);
     #endif
+    
+    levelL.store(maxL);
+    levelR.store(maxR);
+    
 }
 
 //==============================================================================
