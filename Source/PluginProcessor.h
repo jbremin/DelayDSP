@@ -63,7 +63,8 @@ public:
     
     Parameters params;
     
-    std::atomic<float> levelL, levelR;
+    std::atomic<float> levelL;
+    std::atomic<float> levelR;
 
 private:
     Tempo tempo;

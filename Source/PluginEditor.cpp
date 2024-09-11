@@ -10,8 +10,8 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-DelayDSPAudioProcessorEditor::DelayDSPAudioProcessorEditor (DelayDSPAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p)
+
+DelayDSPAudioProcessorEditor::DelayDSPAudioProcessorEditor (DelayDSPAudioProcessor& p) : AudioProcessorEditor (&p), audioProcessor (p), meter(p.levelL, p.levelR)
 {
     delayGroup.setText("Delay");
     delayGroup.setTextLabelPosition(juce::Justification::horizontallyCentred);
@@ -31,6 +31,7 @@ DelayDSPAudioProcessorEditor::DelayDSPAudioProcessorEditor (DelayDSPAudioProcess
     outputGroup.setTextLabelPosition(juce::Justification::horizontallyCentred);
     outputGroup.addAndMakeVisible(gainKnob);
     outputGroup.addAndMakeVisible(mixKnob);
+    outputGroup.addAndMakeVisible(meter);
     addAndMakeVisible(outputGroup);
     
     tempoSyncButton.setButtonText("Sync");
@@ -81,7 +82,6 @@ void DelayDSPAudioProcessorEditor::resized()
         feedbackGroup.setBounds(delayGroup.getRight() + 10, y,
                                 outputGroup.getX() - delayGroup.getRight() - 20, height);
         feedbackKnob.setTopLeftPosition(20, 20);
-        
         stereoKnob.setTopLeftPosition(feedbackKnob.getRight() + 20, 20);
     
         lowCutKnob.setTopLeftPosition(feedbackKnob.getX(), feedbackKnob.getBottom() + 10);
@@ -93,6 +93,8 @@ void DelayDSPAudioProcessorEditor::resized()
     
         tempoSyncButton.setTopLeftPosition(20, delayTimeKnob.getBottom() + 10);
         delayNoteKnob.setTopLeftPosition(delayTimeKnob.getX(), delayTimeKnob.getY());
+    
+        meter.setBounds(outputGroup.getWidth() - 45, 30, 30, gainKnob.getBottom() - 30);
 }
 
 void DelayDSPAudioProcessorEditor::parameterValueChanged(int, float value)
