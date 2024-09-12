@@ -15,7 +15,8 @@ LevelMeter::LevelMeter(std::atomic<float>& measurementL_, std::atomic<float>& me
     : measurementL(measurementL_), measurementR(measurementR_), dbLevelL(clampdB), dbLevelR(clampdB)
 {
     setOpaque(true);
-    startTimerHz(60);
+    startTimerHz(refreshRate);
+    decay = 1.0f - std::exp(-1.0f / (float(refreshRate) * 0.2f));
 }
 
 //chatgpt
@@ -23,14 +24,14 @@ LevelMeter::~LevelMeter() = default;
 
 void LevelMeter::timerCallback()
 {
-    dbLevelL = juce::Decibels::gainToDecibels(measurementL.load(), clampdB);
-    dbLevelR = juce::Decibels::gainToDecibels(measurementR.load(), clampdB);
-    
+    updateLevel(measurementL.load(), levelL, dbLevelL);
+    updateLevel(measurementR.load(), levelR, dbLevelR);
     repaint();
 }
 
 
-void LevelMeter::paint (juce::Graphics& g) {
+void LevelMeter::paint (juce::Graphics& g)
+{
     const auto bounds = getLocalBounds();
     g.fillAll(Colors::LevelMeter::background);
     drawLevel(g, dbLevelL, 0, 7);
@@ -46,8 +47,8 @@ void LevelMeter::paint (juce::Graphics& g) {
         g.setColour(Colors::LevelMeter::tickLabel);
         g.drawSingleLineText(juce::String(int(db)), bounds.getWidth(), y + 3,
                              juce::Justification::right);
-        }
     }
+}
     
 void LevelMeter::resized()
 {
@@ -68,5 +69,20 @@ void LevelMeter::drawLevel(juce::Graphics& g, float level, int x, int width)
     } else if (y < getHeight()) {
         g.setColour(Colors::LevelMeter::levelOK);
         g.fillRect(x, y, width, getHeight() - y);
+    }
+}
+
+void LevelMeter::updateLevel(float newLevel, float& smoothedLevel, float& leveldB) const
+{
+    if (newLevel > smoothedLevel) {
+        smoothedLevel = newLevel; // instantaneous attack
+    } else {
+        smoothedLevel += (newLevel - smoothedLevel) * decay;
+    }
+    
+    if (smoothedLevel > clampLevel) {
+        leveldB = juce::Decibels::gainToDecibels(smoothedLevel);
+    } else {
+        leveldB = clampdB;
     }
 }

@@ -29,6 +29,7 @@ private:
     }
     void drawLevel(juce::Graphics& g, float level, int x, int width);
     void timerCallback() override;
+    void updateLevel(float newLevel, float& smoothedLevel, float& leveldB) const;
     
     std::atomic<float>& measurementL;
     std::atomic<float>& measurementR;
@@ -41,6 +42,10 @@ private:
     float dbLevelR;
     static constexpr float clampdB = -120.0f;
     static constexpr float clampLevel = 0.000001f; // // -120 dB
+    
+    static constexpr int refreshRate = 60;
+    float decay = 0.0f;
+    float levelL = clampLevel; float levelR = clampLevel;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LevelMeter)
 };
