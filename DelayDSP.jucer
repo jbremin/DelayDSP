@@ -17,6 +17,7 @@
       <FILE id="RS4z4Y" name="LevelMeter.h" compile="0" resource="0" file="Source/LevelMeter.h"/>
       <FILE id="oteV5P" name="LookAndFeel.cpp" compile="1" resource="0" file="Source/LookAndFeel.cpp"/>
       <FILE id="pOl3zi" name="LookAndFeel.h" compile="0" resource="0" file="Source/LookAndFeel.h"/>
+      <FILE id="hXwxzJ" name="Measurement.h" compile="0" resource="0" file="Source/Measurement.h"/>
       <FILE id="EJskk5" name="Parameters.cpp" compile="1" resource="0" file="Source/Parameters.cpp"/>
       <FILE id="ZR7Vih" name="Parameters.h" compile="0" resource="0" file="Source/Parameters.h"/>
       <FILE id="AvrzP3" name="PluginEditor.cpp" compile="1" resource="0"

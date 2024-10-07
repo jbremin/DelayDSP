@@ -122,8 +122,8 @@ void DelayDSPAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlo
     lastLowCut = -1.0f;
     lastHighCut = -1.0f;
     
-    levelL.store(0.0f);
-    levelR.store(0.0f);
+    levelL.reset();
+    levelR.reset();
 
 }
 
@@ -234,8 +234,8 @@ void DelayDSPAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, [[m
     protectYourEars(buffer);
     #endif
     
-    levelL.store(maxL);
-    levelR.store(maxR);
+    levelL.updateIfGreater(maxL);
+    levelR.updateIfGreater(maxR);
     
 }
 
