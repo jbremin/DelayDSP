@@ -53,11 +53,18 @@ private:
         audioProcessor.apvts, tempoSyncParamID.getParamID(), tempoSyncButton
     };
     
+    juce::ImageButton bypassButton;
+    
+    juce::AudioProcessorValueTreeState::ButtonAttachment bypassAttachment {
+        audioProcessor.apvts, bypassParamID.getParamID(), bypassButton
+    };
+    
     juce::GroupComponent delayGroup, feedbackGroup, outputGroup;
     
     LevelMeter meter;
     
     MainLookAndFeel mainLF;
+    
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (DelayDSPAudioProcessorEditor)
 };

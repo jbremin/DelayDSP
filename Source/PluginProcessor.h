@@ -61,10 +61,13 @@ public:
     juce::AudioProcessorValueTreeState apvts {
         *this, nullptr, "Parameters", Parameters::createParameterLayout()
     };
+
+    juce::AudioProcessorParameter* getBypassParameter() const override;
     
     Parameters params;
     
     Measurement levelL, levelR;
+
 
 private:
     Tempo tempo;

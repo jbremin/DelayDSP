@@ -223,6 +223,11 @@ void DelayDSPAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, [[m
         float outL = mixL * params.gain;
         float outR = mixR * params.gain;
         
+        if (params.bypassed) { 
+            outL = dryL;
+            outR = dryR;
+        }
+        
         outputDataL[sample] = outL;
         outputDataR[sample] = outR;
         
@@ -238,6 +243,7 @@ void DelayDSPAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, [[m
     levelR.updateIfGreater(maxR);
     
 }
+
 
 //==============================================================================
 bool DelayDSPAudioProcessor::hasEditor() const
@@ -271,4 +277,9 @@ void DelayDSPAudioProcessor::setStateInformation (const void* data, int sizeInBy
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new DelayDSPAudioProcessor();
+}
+
+juce::AudioProcessorParameter* DelayDSPAudioProcessor::getBypassParameter() const
+{
+    return params.bypassParam;
 }
